@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#fbfaf9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>給媽媽的一份生日禮物</title>
+<style>
+:root{
+  --ink:#19181a;
+  --soft-ink:#575158;
+  --muted:#898187;
+  --paper:#fbfaf9;
+  --ivory:#fffefd;
+  --rose:#f4e7e8;
+  --blush:#f0dadd;
+  --lav:#e8e0ec;
+  --lilac:#d8cadf;
+  --accent:#a487a9;
+  --deep:#6f5d74;
+  --glass:rgba(255,255,255,.72);
+  --line:rgba(35,28,38,.09);
+  --ease:cubic-bezier(.22,.8,.2,1);
+  --ease-soft:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang TC","Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow:hidden;overscroll-behavior:none}
+button{font:inherit}
+button,input,a{-webkit-tap-highlight-color:transparent}
+#app{position:relative;width:100%;height:100dvh;overflow:hidden;isolation:isolate;background:#fbfaf9}
+
+/* living background */
+.bg{position:absolute;inset:0;z-index:-3;overflow:hidden;background:
+  radial-gradient(80% 55% at 70% 0%,rgba(241,220,224,.62),transparent 64%),
+  radial-gradient(75% 70% at 0% 100%,rgba(225,215,232,.6),transparent 64%),
+  linear-gradient(155deg,#fff 0%,#fcfaf9 46%,#f8f2f4 100%)}
+.bg::after{content:"";position:absolute;inset:-30%;background:conic-gradient(from 30deg at 50% 50%,transparent 0 18%,rgba(255,255,255,.38) 23%,transparent 30% 55%,rgba(241,226,235,.22) 66%,transparent 73%);filter:blur(50px);animation:bgRotate 28s linear infinite;opacity:.8}
+@keyframes bgRotate{to{transform:rotate(1turn) scale(1.06)}}
+.bloom{position:absolute;border-radius:50%;filter:blur(55px);opacity:.45;will-change:transform;animation:bloomFloat 11s var(--ease-soft) infinite alternate}
+.bloom.one{width:50vw;height:50vw;max-width:500px;max-height:500px;background:#f4dade;right:-14%;top:-12%}
+.bloom.two{width:46vw;height:46vw;max-width:440px;max-height:440px;background:#ddd1e5;left:-16%;bottom:-11%;animation-delay:-4s}
+.bloom.three{width:30vw;height:30vw;max-width:300px;max-height:300px;background:#f5ece7;right:17%;bottom:20%;animation-delay:-8s}
+@keyframes bloomFloat{to{transform:translate3d(4vw,-2vh,0) scale(1.08)}}
+
+/* scene system */
+.scene{position:absolute;inset:0;display:grid;place-items:center;padding:max(28px,env(safe-area-inset-top)) 22px max(26px,env(safe-area-inset-bottom));opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.018);filter:blur(8px);transition:opacity .72s var(--ease),transform .9s var(--ease),filter .8s var(--ease),visibility 0s .9s}
+.scene.active{opacity:1;visibility:visible;pointer-events:auto;transform:none;filter:none;transition-delay:0s}
+.inner{width:min(100%,620px);text-align:center;position:relative}
+.kicker{margin-bottom:15px;color:var(--muted);font-size:12px;font-weight:550;letter-spacing:.14em;text-transform:uppercase}
+h1,h2,p{margin:0}
+h1{font-size:clamp(38px,9.8vw,64px);line-height:1.07;letter-spacing:-.052em;font-weight:650}
+h2{font-size:clamp(31px,7.8vw,50px);line-height:1.1;letter-spacing:-.044em;font-weight:640}
+.lead{margin-top:18px;color:var(--soft-ink);font-size:clamp(17px,4.2vw,21px);line-height:1.65;letter-spacing:-.008em}
+.small{font-size:14px;line-height:1.6;color:var(--muted)}
+.actions{display:flex;justify-content:center;gap:10px;margin-top:34px}
+.btn{position:relative;appearance:none;border:0;min-width:174px;height:52px;padding:0 25px;border-radius:999px;background:#1d1b1e;color:#fff;cursor:pointer;font-size:16px;font-weight:560;letter-spacing:-.01em;box-shadow:0 9px 28px rgba(22,19,23,.15);overflow:hidden;touch-action:manipulation;transition:transform .22s ease,box-shadow .22s ease,opacity .22s ease}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 18%,rgba(255,255,255,.23) 43%,transparent 66%);transform:translateX(-130%);transition:transform .65s var(--ease)}
+.btn:hover::after{transform:translateX(130%)}
+.btn:active{transform:scale(.972);box-shadow:0 5px 18px rgba(22,19,23,.13)}
+.btn.ghost{background:rgba(255,255,255,.65);color:#242126;border:1px solid rgba(26,20,28,.08);box-shadow:0 9px 28px rgba(77,61,82,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.btn[disabled]{opacity:.35;cursor:default}
+
+/* top progress */
+.progress{position:absolute;top:max(16px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:30;opacity:0;transition:opacity .5s ease}
+.progress.show{opacity:.6}
+.progress i{width:5px;height:5px;border-radius:999px;background:rgba(50,41,53,.18);transition:width .45s var(--ease),background .45s ease}
+.progress i.on{width:22px;background:rgba(49,39,52,.58)}
+
+/* scene 1 */
+.opening-mark{width:54px;height:54px;margin:0 auto 30px;border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(238,225,233,.88));border:1px solid rgba(255,255,255,.9);box-shadow:0 17px 45px rgba(101,78,105,.1),inset 0 1px rgba(255,255,255,.95);display:grid;place-items:center;position:relative}
+.opening-mark::before{content:"";width:14px;height:14px;border-radius:50%;background:linear-gradient(145deg,#c6abc8,#9f83a5);box-shadow:0 0 0 8px rgba(176,145,180,.07);animation:heartbeat 2.7s ease-in-out infinite}
+@keyframes heartbeat{45%,55%{transform:scale(1.12)}50%{transform:scale(.94)}}
+.opening-line{display:block;opacity:0;transform:translateY(14px);animation:openingIn .9s var(--ease) forwards}
+.opening-line:nth-child(2){animation-delay:.12s}
+.opening-sub{opacity:0;animation:fadeOnly .8s ease .42s forwards}
+.opening-actions{opacity:0;transform:translateY(10px);animation:openingIn .8s var(--ease) .62s forwards}
+@keyframes openingIn{to{opacity:1;transform:none}}
+@keyframes fadeOnly{to{opacity:1}}
+
+/* gift scene */
+.gift-label{margin-bottom:2px}
+.gift-stage{height:360px;display:grid;place-items:center;perspective:1100px;position:relative;margin:2px auto 0}
+.gift-aura{position:absolute;width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.94) 0%,rgba(242,222,230,.56) 38%,rgba(223,210,233,.24) 58%,transparent 72%);filter:blur(7px);animation:aura 4s ease-in-out infinite alternate}
+@keyframes aura{to{transform:scale(1.1);opacity:.74}}
+.gift{position:relative;width:202px;height:202px;transform-style:preserve-3d;filter:drop-shadow(0 30px 28px rgba(70,53,76,.13));animation:giftHover 5s ease-in-out infinite;will-change:transform}
+@keyframes giftHover{50%{transform:translateY(-10px) rotateY(2deg) rotateX(-1.5deg)}}
+.gift .base{position:absolute;left:20px;right:20px;bottom:5px;height:143px;border-radius:17px;background:linear-gradient(145deg,#fffdfd 0%,#efe9ef 64%,#e4dae6 100%);box-shadow:inset 0 1px rgba(255,255,255,1),inset -8px -10px 20px rgba(119,93,125,.06)}
+.gift .base::before{content:"";position:absolute;top:0;bottom:0;width:35px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#d7c4da,#bca4c2 46%,#d6c4d9);box-shadow:inset 0 1px rgba(255,255,255,.45)}
+.gift .lid{position:absolute;top:38px;left:7px;right:7px;height:53px;border-radius:16px;background:linear-gradient(145deg,#fff 0%,#ebe4ec 100%);z-index:5;box-shadow:0 9px 22px rgba(62,47,67,.11);transform-origin:50% 100%;transition:transform 1.05s var(--ease),opacity .8s ease}
+.gift .lid::before{content:"";position:absolute;inset:0 auto 0 50%;width:39px;transform:translateX(-50%);background:linear-gradient(90deg,#d7c4da,#baa1c0 48%,#d8c6db)}
+.ribbon{position:absolute;left:50%;top:1px;z-index:6;width:126px;height:61px;transform:translateX(-50%);transition:transform 1.05s var(--ease),opacity .8s ease}
+.ribbon .loop{position:absolute;top:4px;width:65px;height:43px;border:13px solid #bea7c4;background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(239,226,240,.15));box-shadow:inset 0 1px 8px rgba(255,255,255,.55)}
+.ribbon .loop.left{left:2px;border-radius:65% 42% 62% 39%;transform:rotate(-18deg)}
+.ribbon .loop.right{right:2px;border-radius:42% 65% 39% 62%;transform:rotate(18deg)}
+.ribbon .knot{position:absolute;width:33px;height:27px;border-radius:48%;left:50%;top:24px;transform:translateX(-50%);background:linear-gradient(145deg,#bda4c2,#9f85a6);box-shadow:inset 0 1px 5px rgba(255,255,255,.48)}
+.inside-light{position:absolute;left:50%;bottom:75px;width:14px;height:14px;border-radius:50%;z-index:4;transform:translateX(-50%) scale(.01);opacity:0;background:#fff;box-shadow:0 0 24px 20px #fff,0 0 70px 55px rgba(250,224,231,.86),0 0 120px 84px rgba(223,208,234,.66);transition:opacity .65s ease .18s,transform 1s var(--ease) .18s}
+.gift.open .lid{transform:translate3d(7px,-123px,20px) rotateX(-22deg) rotateZ(4deg)}
+.gift.open .ribbon{transform:translateX(-50%) translate3d(7px,-126px,23px) rotateZ(4deg)}
+.gift.open .inside-light{opacity:1;transform:translateX(-50%) scale(1)}
+.gift.open{animation:none}
+.gift.open .base{animation:boxSink 1.5s var(--ease) .1s forwards}
+@keyframes boxSink{to{transform:translateY(8px) scale(.985)}}
+.shimmer{position:absolute;left:50%;top:50%;width:2px;height:2px;border-radius:50%;pointer-events:none;opacity:0;background:white;box-shadow:0 0 12px #fff}
+.shimmer.go{animation:shimmerFly 1.6s ease-out forwards}
+@keyframes shimmerFly{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}20%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.1)}}
+
+/* transition wash */
+.wash{position:absolute;inset:0;background:#fff;z-index:80;pointer-events:none;opacity:0;transform:scale(.2);border-radius:50%;filter:blur(6px)}
+.wash.go{animation:wash .96s var(--ease) forwards}
+@keyframes wash{0%{opacity:0;transform:scale(.06)}38%{opacity:1}100%{opacity:0;transform:scale(2.3)}}
+
+/* greeting */
+.greeting-panel{width:min(100%,560px);padding:38px 26px 34px;border-radius:32px;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.8);box-shadow:0 26px 80px rgba(77,59,80,.09);backdrop-filter:blur(24px) saturate(115%);-webkit-backdrop-filter:blur(24px) saturate(115%)}
+.greeting-heart{width:12px;height:12px;margin:0 auto 22px;border-radius:50%;background:#aa8cae;box-shadow:0 0 0 8px rgba(170,140,174,.07)}
+.greeting-copy{margin:25px auto 0;max-width:440px;font-size:clamp(17px,4.25vw,20px);line-height:1.78;color:#3f3a40;letter-spacing:.006em}
+.greeting-copy .line{display:block;opacity:0;transform:translateY(10px)}
+.scene.active .greeting-copy .line{animation:lineIn .74s var(--ease) forwards}
+.scene.active .greeting-copy .line:nth-child(1){animation-delay:.18s}.scene.active .greeting-copy .line:nth-child(2){animation-delay:.32s}.scene.active .greeting-copy .line:nth-child(3){animation-delay:.46s}.scene.active .greeting-copy .line:nth-child(4){animation-delay:.60s}
+@keyframes lineIn{to{opacity:1;transform:none}}
+.signature{margin-top:29px;font-size:16px;color:#242126;opacity:0}.scene.active .signature{animation:fadeOnly .8s ease .78s forwards}
+
+/* pre-reveal */
+.reveal-orb{position:relative;width:180px;height:180px;margin:0 auto 32px;border-radius:50%;background:radial-gradient(circle at 46% 42%,rgba(255,255,255,.92),rgba(237,223,232,.76) 35%,rgba(214,198,222,.62) 64%,rgba(206,189,216,.15) 73%,transparent 74%);box-shadow:0 28px 70px rgba(101,78,105,.13);overflow:hidden}
+.reveal-orb::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 70deg,transparent 0 20%,rgba(255,255,255,.8) 29%,transparent 37% 63%,rgba(250,239,243,.65) 70%,transparent 78%);animation:orbSpin 5.2s linear infinite}
+.reveal-orb::after{content:"";position:absolute;inset:31%;border-radius:50%;background:rgba(255,255,255,.35);backdrop-filter:blur(12px);box-shadow:inset 0 1px rgba(255,255,255,.9)}
+@keyframes orbSpin{to{transform:rotate(1turn)}}
+.reveal-dots{margin-top:24px;display:flex;justify-content:center;gap:8px}.reveal-dots i{width:5px;height:5px;border-radius:50%;background:#a790aa;animation:dotPulse 1.5s ease-in-out infinite}.reveal-dots i:nth-child(2){animation-delay:.16s}.reveal-dots i:nth-child(3){animation-delay:.32s}@keyframes dotPulse{50%{transform:translateY(-4px);opacity:.28}}
+
+/* product reveal */
+#reveal{background:linear-gradient(160deg,#fff 0%,#fcf9fa 44%,#f5edef 100%)}
+#reveal .inner{width:min(100%,700px)}
+.product-stage{height:min(48vh,410px);min-height:300px;position:relative;display:grid;place-items:center;margin-bottom:4px;perspective:1400px}
+.product-halo{position:absolute;width:min(72vw,390px);height:min(72vw,390px);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,1) 0%,rgba(245,225,231,.63) 37%,rgba(223,211,232,.32) 59%,transparent 72%);filter:blur(5px);transform:scale(.72);opacity:0}.scene.active .product-halo{animation:haloReveal 1.5s var(--ease) .05s forwards,haloBreathe 4s ease-in-out 1.7s infinite alternate}@keyframes haloReveal{to{opacity:1;transform:scale(1)}}@keyframes haloBreathe{to{transform:scale(1.06);opacity:.74}}
+.phone-hero{position:relative;z-index:2;max-width:min(78vw,390px);max-height:min(43vh,360px);object-fit:contain;filter:drop-shadow(0 35px 33px rgba(66,48,69,.18));opacity:0;transform:translate3d(0,55px,-100px) scale(.75) rotateY(-8deg)}
+.scene.active .phone-hero{animation:phoneReveal 1.45s var(--ease) .13s forwards}@keyframes phoneReveal{0%{opacity:0;transform:translate3d(0,55px,-100px) scale(.75) rotateY(-8deg);filter:drop-shadow(0 15px 20px rgba(66,48,69,.08)) blur(3px)}65%{opacity:1}100%{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(0);filter:drop-shadow(0 35px 33px rgba(66,48,69,.18)) blur(0)}}
+.product-name,.product-spec,.product-actions{opacity:0;transform:translateY(12px)}.scene.active .product-name{animation:lineIn .78s var(--ease) .72s forwards}.scene.active .product-spec{animation:lineIn .78s var(--ease) .92s forwards}.scene.active .product-actions{animation:lineIn .78s var(--ease) 1.12s forwards}
+.product-name{font-size:clamp(36px,9.6vw,60px);line-height:1.03;letter-spacing:-.05em;font-weight:650}.product-name .apple{font-size:.88em;margin-right:.06em}
+.product-spec{margin-top:9px;color:#575158;font-size:18px;letter-spacing:-.01em}
+
+/* gifts */
+#bundle{overflow:auto;align-items:start;padding-top:max(72px,calc(env(safe-area-inset-top) + 42px));padding-bottom:max(34px,env(safe-area-inset-bottom))}
+#bundle .inner{width:min(100%,660px)}
+.bundle-heading{text-align:left;margin-bottom:26px}.bundle-heading h2{font-size:clamp(32px,8vw,48px)}.bundle-heading .small{margin-top:10px}
+.gift-list{display:grid;gap:12px}
+.gift-card{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;text-align:left;padding:14px;border-radius:26px;background:rgba(255,255,255,.68);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 42px rgba(74,56,78,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;transform:translateY(20px)}
+.scene.active .gift-card{animation:cardIn .78s var(--ease) forwards}.scene.active .gift-card:nth-child(1){animation-delay:.12s}.scene.active .gift-card:nth-child(2){animation-delay:.25s}.scene.active .gift-card:nth-child(3){animation-delay:.38s}@keyframes cardIn{to{opacity:1;transform:none}}
+.gift-thumb{width:96px;height:96px;border-radius:20px;background:linear-gradient(145deg,#fff,#f5f1f4);display:grid;place-items:center;overflow:hidden;position:relative;border:1px solid rgba(40,31,43,.05)}
+.gift-thumb img{width:100%;height:100%;object-fit:cover}.gift-thumb.phone img{object-fit:contain;padding:9px}.gift-card b{display:block;font-size:19px;letter-spacing:-.02em}.gift-card span{display:block;margin-top:5px;color:var(--muted);font-size:14px;line-height:1.4}
+.protector{width:42px;height:76px;border-radius:11px;border:1.6px solid rgba(64,57,66,.54);background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(223,225,231,.28));box-shadow:10px 8px 0 -6px rgba(107,99,110,.18);transform:rotate(-8deg);position:relative}.protector::before{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);width:14px;height:4px;border-radius:5px;background:rgba(89,82,92,.25)}.protector::after{content:"AR";position:absolute;right:-30px;bottom:8px;font-size:10px;letter-spacing:.08em;color:#a38ba6}
+.bundle-note{margin:28px 8px 0;padding-top:22px;border-top:1px solid rgba(40,31,43,.08);text-align:center;color:#665e68;font-size:15px;line-height:1.65}.bundle-note strong{color:#29252b;font-weight:600}
+
+/* finale */
+.final-ring{width:74px;height:74px;border-radius:50%;margin:0 auto 30px;background:radial-gradient(circle at 35% 28%,#fff 0%,#f1e3ea 45%,#ddcedf 100%);box-shadow:0 18px 50px rgba(90,67,95,.13);display:grid;place-items:center;position:relative}.final-ring::before{content:"♥";font-size:24px;color:#9f83a5;animation:heartbeat 2.6s ease-in-out infinite}
+.final-copy{max-width:470px;margin:20px auto 0}
+
+/* particles canvas */
+#fx{position:absolute;inset:0;width:100%;height:100%;z-index:70;pointer-events:none}
+
+/* accessibility */
+@media (max-height:700px){.gift-stage{height:280px}.gift{transform:scale(.82)}.product-stage{height:300px;min-height:260px}.phone-hero{max-height:245px}.greeting-panel{padding:29px 22px 26px}.actions{margin-top:24px}}
+@media (max-width:390px){.scene{padding-left:18px;padding-right:18px}.gift-card{grid-template-columns:82px 1fr}.gift-thumb{width:82px;height:82px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="bg" aria-hidden="true"><i class="bloom one"></i><i class="bloom two"></i><i class="bloom three"></i></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="wash" id="wash" aria-hidden="true"></div>
+
+  <section class="scene active" id="intro" data-step="0">
+    <div class="inner">
+      <div class="opening-mark" aria-hidden="true"></div>
+      <h1><span class="opening-line">媽媽，</span><span class="opening-line">有一份特別的禮物送給妳。</span></h1>
+      <p class="lead opening-sub">今天，想把一點小小的驚喜留給妳。</p>
+      <div class="actions opening-actions"><button class="btn" data-go="gift">打開賀禮</button></div>
+    </div>
+  </section>
+
+  <section class="scene" id="gift" data-step="1">
+    <div class="inner">
+      <div class="kicker gift-label">A little surprise for you</div>
+      <h2>為妳準備了一份驚喜。</h2>
+      <div class="gift-stage">
+        <div class="gift-aura" aria-hidden="true"></div>
+        <div class="gift" id="giftBox" aria-label="禮物盒動畫">
+          <div class="base"></div>
+          <div class="inside-light"></div>
+          <div class="lid"></div>
+          <div class="ribbon"><i class="loop left"></i><i class="loop right"></i><i class="knot"></i></div>
+        </div>
+      </div>
+      <div class="actions"><button class="btn" id="openBtn">打開禮物</button></div>
+      <p class="small" style="margin-top:14px">點一下，慢慢揭開今天的驚喜。</p>
+    </div>
+  </section>
+
+  <section class="scene" id="greeting" data-step="2">
+    <div class="inner greeting-panel">
+      <div class="greeting-heart" aria-hidden="true"></div>
+      <div class="kicker">Happy Birthday</div>
+      <h2>媽媽生日快樂</h2>
+      <div class="greeting-copy">
+        <span class="line">謝謝妳一直以來用心的照顧我們，</span>
+        <span class="line">希望這份禮物可以陪妳</span>
+        <span class="line">記錄更多開心的事情。</span>
+        <span class="line">祝妳健健康康、快快樂樂。</span>
+      </div>
+      <div class="signature">From 弟弟 &amp; 肉肉 ❤️</div>
+      <div class="actions"><button class="btn ghost" data-go="preReveal">繼續</button></div>
+    </div>
+  </section>
+
+  <section class="scene" id="preReveal" data-step="3">
+    <div class="inner">
+      <div class="reveal-orb" aria-hidden="true"></div>
+      <div class="kicker">One more thing</div>
+      <h2>準備好看看<br>妳的禮物了嗎？</h2>
+      <div class="reveal-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="actions"><button class="btn" id="revealBtn">揭曉禮物</button></div>
+    </div>
+  </section>
+
+  <section class="scene" id="reveal" data-step="4">
+    <div class="inner">
+      <div class="product-stage">
+        <div class="product-halo" aria-hidden="true"></div>
+        <img class="phone-hero" src="assets/iphone17.webp" alt="薰衣草紫色 iPhone 17">
+      </div>
+      <h1 class="product-name"><span class="apple"></span>iPhone 17</h1>
+      <div class="product-spec">256GB · 薰衣草紫色</div>
+      <div class="actions product-actions"><button class="btn ghost" data-go="bundle">看看完整禮物</button></div>
+    </div>
+  </section>
+
+  <section class="scene" id="bundle" data-step="5">
+    <div class="inner">
+      <div class="bundle-heading">
+        <div class="kicker">Everything for you</div>
+        <h2>這份禮物，<br>都幫妳準備好了。</h2>
+        <p class="small">從手機，到每天會碰到的小細節。</p>
+      </div>
+      <div class="gift-list">
+        <article class="gift-card">
+          <div class="gift-thumb phone"><img src="assets/iphone17.webp" alt="iPhone 17"></div>
+          <div><b> iPhone 17</b><span>256GB · 薰衣草紫色</span></div>
+        </article>
+        <article class="gift-card">
+          <div class="gift-thumb"><div class="protector" aria-hidden="true"></div></div>
+          <div><b>AR 超清防爆保護貼</b><span>清晰透亮，安心保護新手機。</span></div>
+        </article>
+        <article class="gift-card">
+          <div class="gift-thumb"><img src="assets/glitter-case.jpeg" alt="暈染閃粉手機殼"></div>
+          <div><b>暈染閃粉手機殼</b><span>粉嫩暈染 · 細緻閃粉</span></div>
+        </article>
+      </div>
+      <p class="bundle-note">希望這份禮物，陪妳記錄更多<br><strong>開心、漂亮，也值得收藏的日子。</strong></p>
+      <div class="actions"><button class="btn" id="finishBtn">收下祝福</button></div>
+    </div>
+  </section>
+
+  <section class="scene" id="finale" data-step="6">
+    <div class="inner">
+      <div class="final-ring" aria-hidden="true"></div>
+      <div class="kicker">With all our love</div>
+      <h1>祝妳生日快樂，<br>天天開心。</h1>
+      <p class="lead final-copy">希望接下來的每一天，都有更多值得記錄的好事情。</p>
+      <div class="signature" style="opacity:1;margin-top:28px">From 弟弟 &amp; 肉肉 ❤️</div>
+      <div class="actions"><button class="btn ghost" id="restartBtn">再看一次</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const sceneIds = ['intro','gift','greeting','preReveal','reveal','bundle','finale'];
+  const scenes = new Map(sceneIds.map(id => [id, document.getElementById(id)]));
+  const progress = document.getElementById('progress');
+  const wash = document.getElementById('wash');
+  const giftBox = document.getElementById('giftBox');
+  const openBtn = document.getElementById('openBtn');
+  const revealBtn = document.getElementById('revealBtn');
+  let current = 'intro';
+  let busy = false;
+
+  sceneIds.forEach((_, i) => {
+    const dot = document.createElement('i');
+    if (i === 0) dot.classList.add('on');
+    progress.appendChild(dot);
+  });
+
+  const updateProgress = (id) => {
+    const index = sceneIds.indexOf(id);
+    [...progress.children].forEach((dot, i) => dot.classList.toggle('on', i === index));
+    progress.classList.toggle('show', id !== 'intro' && id !== 'finale');
+  };
+
+  function haptic(ms=7){ try{ if(navigator.vibrate) navigator.vibrate(ms); }catch(e){} }
+
+  // Tiny, user-gesture-driven WebAudio chime: no external audio files.
+  let audioCtx;
+  function tone(kind='tap'){
+    try{
+      audioCtx ||= new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === 'suspended') audioCtx.resume();
+      const now = audioCtx.currentTime;
+      const master = audioCtx.createGain();
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(kind==='open' ? 0.055 : 0.025, now + 0.015);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + (kind==='open' ? 1.2 : .28));
+      master.connect(audioCtx.destination);
+      const freqs = kind==='open' ? [523.25,659.25,783.99] : [659.25];
+      freqs.forEach((f,idx)=>{
+        const osc=audioCtx.createOscillator(); const gain=audioCtx.createGain();
+        osc.type='sine'; osc.frequency.setValueAtTime(f,now+idx*.07);
+        gain.gain.setValueAtTime(0.0001,now); gain.gain.exponentialRampToValueAtTime(1,now+.02+idx*.07); gain.gain.exponentialRampToValueAtTime(.0001,now+.24+idx*.13);
+        osc.connect(gain); gain.connect(master); osc.start(now+idx*.07); osc.stop(now+.5+idx*.14);
+      });
+    }catch(e){}
+  }
+
+  function go(id, opts={}){
+    if(!scenes.has(id) || current===id) return;
+    scenes.get(current)?.classList.remove('active');
+    scenes.get(id).classList.add('active');
+    current=id;
+    updateProgress(id);
+    if(!opts.silent){ haptic(); tone('tap'); }
+    if(id==='bundle') scenes.get(id).scrollTop=0;
+  }
+
+  document.querySelectorAll('[data-go]').forEach(btn => btn.addEventListener('click', () => go(btn.dataset.go)));
+
+  // FX canvas
+  const canvas = document.getElementById('fx');
+  const ctx = canvas.getContext('2d');
+  let dpr=1, particles=[], raf=0;
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=Math.round(innerWidth*dpr); canvas.height=Math.round(innerHeight*dpr);
+    canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  addEventListener('resize', resize, {passive:true}); resize();
+
+  function burst(count=42, originY=.48){
+    const colors=['#bca3c1','#d9c3d0','#ead9d9','#d9cee3','#f2e8d4','#ffffff'];
+    for(let i=0;i<count;i++){
+      const a=Math.random()*Math.PI*2, speed=2.1+Math.random()*5.2;
+      particles.push({
+        x:innerWidth*.5+(Math.random()-.5)*36,y:innerHeight*originY+(Math.random()-.5)*24,
+        vx:Math.cos(a)*speed,vy:Math.sin(a)*speed-2.4,g:.075+Math.random()*.075,
+        life:1,decay:.007+Math.random()*.006,r:1.5+Math.random()*3.6,rot:Math.random()*6.3,vr:(Math.random()-.5)*.18,
+        c:colors[Math.floor(Math.random()*colors.length)],shape:Math.random()>.5?'rect':'dot'
+      });
+    }
+    if(!raf) raf=requestAnimationFrame(draw);
+  }
+  function draw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.995;p.rot+=p.vr;p.life-=p.decay;
+      ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;
+      if(p.shape==='dot'){ctx.beginPath();ctx.arc(0,0,p.r*.7,0,Math.PI*2);ctx.fill()} else ctx.fillRect(-p.r,-p.r*.42,p.r*2,p.r*.84);
+      ctx.restore();
+    });
+    particles=particles.filter(p=>p.life>0 && p.y<innerHeight+40);
+    raf=particles.length?requestAnimationFrame(draw):0;
+  }
+
+  function sparkGift(){
+    giftBox.querySelectorAll('.shimmer').forEach(e=>e.remove());
+    for(let i=0;i<26;i++){
+      const s=document.createElement('i'); s.className='shimmer go';
+      const angle=(Math.PI*2)*(i/26)+(Math.random()-.5)*.3, dist=65+Math.random()*110;
+      s.style.setProperty('--x',Math.cos(angle)*dist+'px');
+      s.style.setProperty('--y',Math.sin(angle)*dist+'px');
+      s.style.animationDelay=(Math.random()*.22)+'s';
+      giftBox.appendChild(s); setTimeout(()=>s.remove(),1900);
+    }
+  }
+
+  openBtn.addEventListener('click', () => {
+    if(busy || giftBox.classList.contains('open')) return;
+    busy=true; haptic(14); tone('open');
+    giftBox.classList.add('open'); openBtn.disabled=true; openBtn.textContent='開啟中…';
+    sparkGift(); burst(38,.50);
+    setTimeout(()=>{
+      wash.classList.remove('go'); void wash.offsetWidth; wash.classList.add('go');
+    },720);
+    setTimeout(()=>{
+      go('greeting',{silent:true}); busy=false;
+    },1120);
+  });
+
+  revealBtn.addEventListener('click', () => {
+    if(busy) return; busy=true; haptic(12); tone('open');
+    wash.classList.remove('go'); void wash.offsetWidth; wash.classList.add('go');
+    setTimeout(()=>go('reveal',{silent:true}),390);
+    setTimeout(()=>{burst(70,.40); busy=false;},900);
+  });
+
+  document.getElementById('finishBtn').addEventListener('click', () => {
+    go('finale'); setTimeout(()=>burst(92,.43),220);
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    giftBox.classList.remove('open'); openBtn.disabled=false; openBtn.textContent='打開禮物';
+    particles=[]; ctx.clearRect(0,0,innerWidth,innerHeight); go('intro');
+  });
+
+  // Gentle pointer parallax on capable devices; no effect on touch-only phones.
+  if(matchMedia('(pointer:fine)').matches){
+    addEventListener('pointermove', e=>{
+      const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);
+      document.querySelectorAll('.bloom').forEach((el,i)=>el.style.translate=`${x*(8+i*3)}px ${y*(6+i*2)}px`);
+      if(current==='gift'&&!giftBox.classList.contains('open')) giftBox.style.rotate=`${-y*2}deg ${x*3}deg 0deg`;
+    },{passive:true});
+  }
+
+  // Preload reveal imagery without exposing it onscreen.
+  ['assets/iphone17.webp','assets/glitter-case.jpeg'].forEach(src=>{const im=new Image();im.src=src});
+})();
+</script>
+</body>
+</html>
