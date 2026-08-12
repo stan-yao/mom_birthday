@@ -60,7 +60,10 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 .reveal-disc{width:132px;height:132px;margin:0 auto 28px;border-radius:50%;position:relative;background:radial-gradient(circle at 35% 25%,#fff 0%,#f0e7f4 54%,#d7c9df 100%);box-shadow:0 26px 70px rgba(88,64,100,.14),inset 0 1px 2px rgba(255,255,255,.92);animation:float 4s ease-in-out infinite}.reveal-disc::before{content:"";position:absolute;inset:16px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 18%,rgba(255,255,255,.95) 28%,transparent 38% 62%,rgba(255,255,255,.75) 72%,transparent 82%);animation:spin 4.8s linear infinite}.reveal-disc::after{content:"";position:absolute;inset:40px;border-radius:50%;background:rgba(255,255,255,.36);backdrop-filter:blur(10px);box-shadow:inset 0 1px rgba(255,255,255,.9)}@keyframes spin{to{transform:rotate(1turn)}}
 .wash{position:absolute;inset:0;z-index:70;background:#fff;pointer-events:none;opacity:0;transform:scale(.1);border-radius:50%;filter:blur(8px)}.wash.go{animation:wash .9s var(--ease2) forwards}@keyframes wash{0%{opacity:0;transform:scale(.08)}36%{opacity:1}100%{opacity:0;transform:scale(2.4)}}
 #reveal{background:linear-gradient(180deg,#fff 0%,#fcfafc 52%,#f3edf5 100%)}.product-stage{height:min(54vh,470px);min-height:330px;display:grid;place-items:center;margin:6px 0 6px;position:relative}.product-stage::before{content:"";position:absolute;width:min(88vw,520px);height:min(46vw,220px);left:50%;bottom:4%;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(160,140,176,.24), rgba(160,140,176,0) 70%);filter:blur(18px)}.phone-hero{max-width:min(86vw,430px);max-height:min(50vh,430px);object-fit:contain;filter:drop-shadow(0 40px 35px rgba(71,53,78,.16));opacity:0;transform:translate3d(0,44px,-140px) scale(.76)}.scene.active .phone-hero{animation:phoneReveal 1.35s var(--ease2) .1s forwards}@keyframes phoneReveal{0%{opacity:0;filter:drop-shadow(0 10px 18px rgba(71,53,78,.05)) blur(3px);transform:translate3d(0,44px,-140px) scale(.76)}70%{opacity:1}100%{opacity:1;filter:drop-shadow(0 40px 35px rgba(71,53,78,.16)) blur(0);transform:translate3d(0,0,0) scale(1)}}.product-name,.product-spec,.product-actions{opacity:0;transform:translateY(13px)}.scene.active .product-name{animation:rise .75s var(--ease2) .58s forwards}.scene.active .product-spec{animation:rise .75s var(--ease2) .78s forwards}.scene.active .product-actions{animation:rise .75s var(--ease2) .96s forwards}.product-name{display:flex;justify-content:center;align-items:center;gap:.24em;font-size:clamp(38px,10vw,62px);line-height:1.01;letter-spacing:-.055em;font-weight:650}.product-spec{margin-top:10px;color:#5f5963;font-size:18px}.apple-mark{width:.82em;height:.94em;display:inline-block;position:relative;transform:translateY(.01em)}.apple-mark::before,.apple-mark::after{content:"";position:absolute;background:#111;border-radius:50%}.apple-mark::before{width:.58em;height:.64em;left:.09em;top:.23em;box-shadow:.19em 0 0 #111}.apple-mark::after{width:.22em;height:.16em;left:.42em;top:.02em;border-radius:100% 0 100% 0;transform:rotate(-32deg)}.apple-cut{position:absolute;width:.16em;height:.22em;right:.1em;top:.32em;background:#fff;border-radius:0 100% 100% 0;transform:rotate(-18deg)}
-#bundle{overflow:auto;align-items:start;padding-top:max(70px,calc(env(safe-area-inset-top) + 44px));padding-bottom:max(34px,env(safe-area-inset-bottom))}#bundle .inner{width:min(100%,700px)}.bundle-heading{text-align:left;margin-bottom:24px}.bundle-heading h2{font-size:clamp(32px,8.4vw,48px)}.bundle-heading .micro{margin-top:10px}.gift-list{display:grid;gap:14px}.gift-card{display:grid;grid-template-columns:116px 1fr;gap:18px;align-items:center;text-align:left;padding:14px;border-radius:28px;background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.98);box-shadow:0 16px 46px rgba(70,52,80,.08),inset 0 1px rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);opacity:0;transform:translateY(22px)}.scene.active .gift-card{animation:rise .8s var(--ease2) forwards}.scene.active .gift-card:nth-child(1){animation-delay:.12s}.scene.active .gift-card:nth-child(2){animation-delay:.26s}.scene.active .gift-card:nth-child(3){animation-delay:.40s}.thumb{width:116px;height:116px;border-radius:24px;background:linear-gradient(145deg,#fff,#f3eef6);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(39,29,43,.05);position:relative}.thumb img{width:100%;height:100%;object-fit:cover}.thumb.phone img{object-fit:contain;padding:8px;background:linear-gradient(180deg,#fcfbfd,#f4eef5)}.gift-card b{display:block;font-size:19px;letter-spacing:-.025em;font-weight:640}.gift-card span{display:block;margin-top:5px;color:#807987;font-size:14px;line-height:1.45}.protector{width:70px;height:96px;border-radius:18px;border:2px solid rgba(34,28,38,.65);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(242,238,247,.68));box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 12px 26px rgba(73,57,82,.09);position:relative;transform:rotate(-7deg)}.protector::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:30px;height:8px;border-radius:0 0 10px 10px;background:#161418}.protector::after{content:"";position:absolute;inset:12px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:linear-gradient(125deg,rgba(255,255,255,.72),rgba(255,255,255,0) 40%,rgba(216,207,230,.18) 72%,rgba(255,255,255,.25))}.bundle-note{margin:28px 8px 0;padding:23px 12px 0;border-top:1px solid rgba(42,32,48,.08);color:#68616d;font-size:15px;line-height:1.75;text-align:center}
+#bundle{overflow:auto;align-items:start;padding-top:max(70px,calc(env(safe-area-inset-top) + 44px));padding-bottom:max(120px,calc(env(safe-area-inset-bottom) + 104px))}#bundle .inner{width:min(100%,700px);padding-bottom:34px}.bundle-heading{text-align:left;margin-bottom:24px}.bundle-heading h2{font-size:clamp(32px,8.4vw,48px)}.bundle-heading .micro{margin-top:10px}.gift-list{display:grid;gap:14px}.gift-card{display:grid;grid-template-columns:116px 1fr;gap:18px;align-items:center;text-align:left;padding:14px;border-radius:28px;background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.98);box-shadow:0 16px 46px rgba(70,52,80,.08),inset 0 1px rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);opacity:0;transform:translateY(22px)}.scene.active .gift-card{animation:rise .8s var(--ease2) forwards}.scene.active .gift-card:nth-child(1){animation-delay:.12s}.scene.active .gift-card:nth-child(2){animation-delay:.26s}.scene.active .gift-card:nth-child(3){animation-delay:.40s}.thumb{width:116px;height:116px;border-radius:24px;background:linear-gradient(145deg,#fff,#f3eef6);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(39,29,43,.05);position:relative}.thumb img{width:100%;height:100%;object-fit:cover}.thumb.phone img{object-fit:contain;padding:8px;background:linear-gradient(180deg,#fcfbfd,#f4eef5)}.gift-card b{display:block;font-size:19px;letter-spacing:-.025em;font-weight:640}.gift-card span{display:block;margin-top:5px;color:#807987;font-size:14px;line-height:1.45}.protector{width:70px;height:96px;border-radius:18px;border:2px solid rgba(34,28,38,.65);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(242,238,247,.68));box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 12px 26px rgba(73,57,82,.09);position:relative;transform:rotate(-7deg)}.protector::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:30px;height:8px;border-radius:0 0 10px 10px;background:#161418}.protector::after{content:"";position:absolute;inset:12px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:linear-gradient(125deg,rgba(255,255,255,.72),rgba(255,255,255,0) 40%,rgba(216,207,230,.18) 72%,rgba(255,255,255,.25))}.bundle-note{margin:28px 8px 0;padding:23px 12px 0;border-top:1px solid rgba(42,32,48,.08);color:#68616d;font-size:15px;line-height:1.75;text-align:center}
+.bundle-dock{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:16px 22px max(16px,env(safe-area-inset-bottom));display:flex;justify-content:center;background:linear-gradient(180deg,rgba(247,243,247,0),rgba(247,243,247,.86) 28%,rgba(247,243,247,.98) 72%);pointer-events:none}
+.bundle-dock::before{content:"";position:absolute;inset:20px 0 0;background:rgba(247,243,247,.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.82);z-index:-1}
+.bundle-dock .btn{pointer-events:auto;width:min(100%,420px);height:54px;box-shadow:0 16px 36px rgba(37,28,42,.16)}
 .final-heart{width:76px;height:76px;margin:0 auto 28px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 34% 28%,#fff 0%,#f0e5f2 48%,#dccde3 100%);box-shadow:0 18px 50px rgba(85,62,95,.13);font-size:26px;color:#9d84ae;animation:beat 2.5s ease-in-out infinite}@keyframes beat{45%,55%{transform:scale(1.09)}50%{transform:scale(.96)}}.final-gift{margin:22px auto 0;max-width:170px;filter:drop-shadow(0 22px 24px rgba(70,56,80,.12))}
 
 .rating-card{margin:24px auto 0;width:min(100%,500px);padding:24px 20px 22px;border-radius:28px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(74,55,84,.08),inset 0 1px rgba(255,255,255,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);text-align:center}
@@ -74,17 +77,6 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 .rating-result.show{opacity:1;transform:none}
 .rating-spark{position:absolute;pointer-events:none;font-size:13px;opacity:0;animation:ratingSpark .75s ease-out forwards}
 @keyframes ratingSpark{0%{opacity:0;transform:translate(0,0) scale(.4)}24%{opacity:1}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(1.2) rotate(20deg)}}
-.feedback-card{margin:16px auto 0;width:min(100%,500px);padding:20px;border-radius:28px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(74,55,84,.08),inset 0 1px rgba(255,255,255,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);text-align:left}
-.feedback-label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;font-size:13px;font-weight:650;color:#504a54;letter-spacing:-.01em}
-.feedback-label span:last-child{font-size:11px;font-weight:550;color:#a099a5}
-.feedback-input{width:100%;min-height:112px;resize:none;border:1px solid rgba(42,32,48,.08);outline:none;border-radius:20px;padding:16px 16px 15px;background:rgba(251,249,252,.9);color:#211e23;font:inherit;font-size:16px;line-height:1.6;letter-spacing:-.01em;box-shadow:inset 0 1px 3px rgba(54,42,61,.035);transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
-.feedback-input:focus{background:#fff;border-color:rgba(146,119,164,.30);box-shadow:0 0 0 4px rgba(184,160,200,.10),inset 0 1px 3px rgba(54,42,61,.025)}
-.feedback-input::placeholder{color:#aaa2ae}
-.line-btn{background:#06c755;color:#fff;box-shadow:0 14px 30px rgba(6,199,85,.18)}
-.line-btn::after{content:'LINE';display:inline-grid;place-items:center;margin-left:9px;width:30px;height:20px;border-radius:7px;background:#fff;color:#06c755;font-size:9px;font-weight:800;letter-spacing:-.03em;vertical-align:1px}
-.feedback-hint{margin-top:10px;text-align:center;font-size:12px;line-height:1.55;color:#948d99}
-.feedback-thanks{margin-top:10px;text-align:center;font-size:13px;color:#776f7b;min-height:20px;opacity:0;transform:translateY(5px);transition:.3s var(--ease2)}
-.feedback-thanks.show{opacity:1;transform:none}
 
 #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:65}
 @media (max-height:720px){.hero-img{max-height:280px}.product-stage{height:340px;min-height:300px}.phone-hero{max-height:310px}.panel{padding:28px 22px 25px}}@media (max-width:410px){.gift-card{grid-template-columns:98px 1fr}.thumb{width:98px;height:98px}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -178,15 +170,15 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
         <article class="gift-card"><div class="thumb"><img src="assets/case-photo.png" alt="暈染閃粉手機殼"></div><div><b>暈染閃粉手機殼</b><span>用妳喜歡的粉感閃粉，搭配這次的薰衣草粉紫色調。</span></div></article>
       </div>
       <p class="bundle-note">希望這份禮物，陪妳記錄更多美好的回憶與每一天的好心情。💜<br>From 弟弟 &amp; 肉肉 ❤️</p>
-      <div class="actions"><button class="btn soft" data-next="finale">收下祝福</button></div>
     </div>
+    <div class="bundle-dock"><button class="btn" data-next="finale">收下祝福</button></div>
   </section>
 
   <section class="scene" id="finale" data-step="6">
     <div class="inner copy-animate" style="max-width:560px">
       <div class="final-heart">♥</div>
       <h2>祝妳生日快樂<br>天天開心</h2>
-      <p class="lead">愛妳喔，媽媽！<br>在離開前，請先幫這次驚喜打個分數 😌</p>
+      <p class="lead">愛妳喔，媽媽！<br>最後再幫這次生日驚喜打個分數 😌</p>
 
       <div class="rating-card" id="ratingCard">
         <div class="rating-title">請留下本次生日驚喜五星評價</div>
@@ -201,13 +193,6 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
         <p class="rating-result" id="ratingResult">請選一個星星數 ✨</p>
       </div>
 
-      <div class="feedback-card" id="feedbackCard">
-        <label class="feedback-label" for="momFeedback"><span>媽媽的生日感言</span><span id="feedbackCount">0 / 200</span></label>
-        <textarea class="feedback-input" id="momFeedback" maxlength="200" placeholder="例如：謝謝你們的禮物，我很喜歡 ❤️"></textarea>
-        <div class="actions" style="margin-top:16px"><button class="btn line-btn" id="sendLine">傳 LINE 給弟弟</button></div>
-        <p class="feedback-hint">按下後會打開 LINE，文字會自動帶入；再選擇弟弟的聊天室送出即可。</p>
-        <p class="feedback-thanks" id="feedbackThanks">感言已經幫妳準備好了 ✨</p>
-      </div>
       <div class="actions" style="margin-top:18px"><button class="btn soft" id="restart">重新播放</button></div>
     </div>
   </section>
@@ -286,26 +271,7 @@ starButtons.forEach(btn=>{
   });
 });
 
-const momFeedback=byId('momFeedback'),feedbackCount=byId('feedbackCount'),sendLine=byId('sendLine'),feedbackThanks=byId('feedbackThanks');
-if(momFeedback){
-  momFeedback.addEventListener('input',()=>{feedbackCount.textContent=`${momFeedback.value.length} / 200`});
-}
-if(sendLine){
-  sendLine.addEventListener('click',()=>{
-    const raw=(momFeedback.value||'').trim();
-    const body=raw || '謝謝你們準備的生日禮物，我很開心 ❤️';
-    const message=`我的生日禮物感言 💜
 
-${body}
-
-— 媽媽`;
-    feedbackThanks.classList.add('show');
-    softHaptic();
-    setTimeout(()=>{
-      window.location.href='https://line.me/R/share?text='+encodeURIComponent(message);
-    },180);
-  });
-}
 
 </script>
 </body>
