@@ -19,15 +19,15 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 .btn{appearance:none;border:0;min-width:168px;height:52px;border-radius:999px;padding:0 26px;background:#18161a;color:#fff;font-size:16px;font-weight:590;letter-spacing:-.01em;box-shadow:0 16px 32px rgba(25,20,29,.12);position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease}.btn::before{content:"";position:absolute;inset:-1px;background:linear-gradient(110deg,transparent 18%,rgba(255,255,255,.24) 42%,transparent 62%);transform:translateX(-140%)}.btn:hover::before{animation:sheen .9s var(--ease)}.btn:active{transform:scale(.975);box-shadow:0 10px 20px rgba(25,20,29,.1)}.btn.soft{background:rgba(255,255,255,.72);color:#27242b;border:1px solid rgba(37,28,40,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 28px rgba(77,59,87,.08)}@keyframes sheen{to{transform:translateX(140%)}}
 .copy-animate>*{opacity:0;transform:translateY(14px)}.scene.active .copy-animate>*{animation:rise .74s var(--ease2) forwards}.scene.active .copy-animate>*:nth-child(2){animation-delay:.12s}.scene.active .copy-animate>*:nth-child(3){animation-delay:.24s}.scene.active .copy-animate>*:nth-child(4){animation-delay:.36s}.scene.active .copy-animate>*:nth-child(5){animation-delay:.48s}@keyframes rise{to{opacity:1;transform:none}}
 .hero-wrap{display:grid;place-items:center;position:relative}.hero-wrap::before{content:"";position:absolute;width:min(86vw,430px);height:min(86vw,430px);border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.96) 0%, rgba(244,236,246,.78) 35%, rgba(229,219,237,.18) 62%, transparent 74%);filter:blur(2px);animation:halo 4.5s ease-in-out infinite alternate}@keyframes halo{to{transform:scale(1.05);opacity:.82}}
-.hero-img{display:block;position:relative;max-width:min(78vw,360px);max-height:min(42vh,360px);object-fit:contain;filter:drop-shadow(0 30px 28px rgba(70,56,80,.12));animation:float 5.2s ease-in-out infinite}@keyframes float{50%{transform:translateY(-10px)}}
-#intro .inner{display:grid;gap:18px;justify-items:center}#intro .hero-img{max-width:min(79vw,305px);max-height:min(39vh,305px);filter:drop-shadow(0 24px 24px rgba(70,56,80,.11))}
+.hero-img{display:block;position:relative;max-width:min(78vw,360px);max-height:min(42vh,360px);object-fit:contain;filter:drop-shadow(0 30px 28px rgba(70,56,80,.12));animation:float 5.2s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-7px) rotate(-.55deg)}50%{transform:translateY(-13px) rotate(.65deg)}75%{transform:translateY(-6px) rotate(-.35deg)}}
+#intro .inner{display:grid;gap:18px;justify-items:center}#intro .hero-img{max-width:min(79vw,305px);max-height:min(39vh,305px);filter:drop-shadow(0 24px 24px rgba(70,56,80,.11));animation:giftIntroWobble 3.1s ease-in-out infinite}@keyframes giftIntroWobble{0%,100%{transform:translateY(0) rotate(0)}20%{transform:translate(-3px,-7px) rotate(-1.1deg)}45%{transform:translate(3px,-13px) rotate(1.35deg)}70%{transform:translate(-2px,-7px) rotate(-.8deg)}}
 
 /* premium gift open stage */
 #gift .inner{max-width:700px}
 .gift-stage{height:min(56vh,470px);min-height:340px;position:relative;display:grid;place-items:center;margin:8px 0 4px}
 .gift-shadow{position:absolute;left:50%;bottom:8%;width:min(70vw,320px);height:44px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(96,75,110,.24), rgba(96,75,110,0) 72%);filter:blur(14px);opacity:.42}
-.gift-closed{position:absolute;left:50%;top:50%;z-index:4;display:block;width:min(82vw,350px);max-height:min(44vh,365px);object-fit:contain;transform:translate(-50%,-50%);filter:drop-shadow(0 24px 25px rgba(70,56,80,.12));opacity:1;transition:opacity .34s ease,transform .6s var(--ease2),filter .45s ease;animation:giftIdle 4.8s ease-in-out infinite}
-@keyframes giftIdle{50%{transform:translate(-50%,calc(-50% - 8px)) rotate(-.35deg)}}
+.gift-closed{position:absolute;left:50%;top:50%;z-index:4;display:block;width:min(82vw,350px);max-height:min(44vh,365px);object-fit:contain;transform:translate(-50%,-50%);filter:drop-shadow(0 24px 25px rgba(70,56,80,.12));opacity:1;transition:opacity .34s ease,transform .6s var(--ease2),filter .45s ease;animation:giftIdle 2.75s ease-in-out infinite}
+@keyframes giftIdle{0%,100%{transform:translate(-50%,-50%) rotate(0)}18%{transform:translate(calc(-50% - 4px),calc(-50% - 5px)) rotate(-1.2deg)}42%{transform:translate(calc(-50% + 4px),calc(-50% - 13px)) rotate(1.55deg)}68%{transform:translate(calc(-50% - 3px),calc(-50% - 8px)) rotate(-1deg)}84%{transform:translate(calc(-50% + 2px),calc(-50% - 3px)) rotate(.55deg)}}
 .gift-open-art{position:absolute;left:50%;top:53%;z-index:3;display:block;width:min(90vw,510px);max-height:min(58vh,510px);object-fit:contain;transform:translate(-50%,-50%) scale(.88);filter:drop-shadow(0 24px 32px rgba(70,56,80,.12));opacity:0;transition:opacity .4s ease .08s,transform 1s var(--ease2),filter .8s ease}
 .gift-stage .glow{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%) scale(.2);width:min(84vw,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.98) 0%, rgba(255,245,249,.94) 30%, rgba(237,221,244,.42) 54%, rgba(237,221,244,0) 74%);filter:blur(6px);opacity:0;z-index:1}
 .gift-stage .spark{position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 22px rgba(255,255,255,.95);opacity:0;z-index:5}
@@ -38,6 +38,25 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 @keyframes glowBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}18%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.8)}}
 @keyframes stars{0%{opacity:0;transform:translate(-50%,-50%) scale(.1)}18%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1)}}
 .panel{padding:34px 26px 30px;border-radius:34px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.96);box-shadow:0 28px 80px rgba(84,65,95,.10), inset 0 1px rgba(255,255,255,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}.heart{width:58px;height:58px;border-radius:18px;margin:0 auto 24px;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#eee5f3);box-shadow:0 15px 35px rgba(80,57,90,.09);color:#a58cb8;font-size:24px}.greeting-copy{margin:24px auto 0;max-width:430px;font-size:17px;line-height:1.9;color:#4f4953;letter-spacing:-.01em}.signature{margin-top:20px;color:#2d2930;font-size:15px;font-weight:570}
+
+/* playful pre-reveal sequence */
+#preReveal .inner{max-width:540px}
+.prank-status{min-height:56px;margin:18px auto 0;display:grid;place-items:center;position:relative}
+.prank-message{font-size:15px;line-height:1.55;color:#706975;transition:opacity .22s ease,transform .28s var(--ease2)}
+.prank-message.swap{opacity:0;transform:translateY(7px)}
+.prank-counter{margin-top:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#a29aa7;opacity:0;transition:opacity .3s ease}
+.prank-counter.show{opacity:1}
+.prank-progress{width:min(72vw,310px);height:5px;border-radius:999px;background:rgba(35,27,40,.07);overflow:hidden;margin:14px auto 0;opacity:0;transform:scaleX(.96);transition:opacity .28s ease,transform .3s var(--ease2)}
+.prank-progress.show{opacity:1;transform:scaleX(1)}
+.prank-progress i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#d6c6e0,#a78db9);transition:width .75s var(--ease2)}
+.prank-actions{position:relative;min-height:78px;margin-top:19px;display:grid;place-items:center}
+#revealGift{transition:transform .38s var(--ease2),left .38s var(--ease2),top .38s var(--ease2),background .25s ease;will-change:transform}
+#revealGift.dodge{position:relative}
+#revealGift.tease{animation:tease .34s ease}
+@keyframes tease{0%,100%{transform:translate(0,0) scale(1)}30%{transform:translate(-5px,0) rotate(-1.2deg) scale(.99)}65%{transform:translate(5px,0) rotate(1.2deg) scale(.99)}}
+.prank-pop{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.8);padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.95);box-shadow:0 12px 30px rgba(72,55,82,.09);backdrop-filter:blur(14px);font-size:13px;color:#655e69;opacity:0;pointer-events:none;white-space:nowrap}
+.prank-pop.show{animation:popHint .9s var(--ease2) forwards}
+@keyframes popHint{0%{opacity:0;transform:translate(-50%,-40%) scale(.82)}25%{opacity:1;transform:translate(-50%,-55%) scale(1)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-78%) scale(.98)}}
 .reveal-disc{width:132px;height:132px;margin:0 auto 28px;border-radius:50%;position:relative;background:radial-gradient(circle at 35% 25%,#fff 0%,#f0e7f4 54%,#d7c9df 100%);box-shadow:0 26px 70px rgba(88,64,100,.14),inset 0 1px 2px rgba(255,255,255,.92);animation:float 4s ease-in-out infinite}.reveal-disc::before{content:"";position:absolute;inset:16px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 18%,rgba(255,255,255,.95) 28%,transparent 38% 62%,rgba(255,255,255,.75) 72%,transparent 82%);animation:spin 4.8s linear infinite}.reveal-disc::after{content:"";position:absolute;inset:40px;border-radius:50%;background:rgba(255,255,255,.36);backdrop-filter:blur(10px);box-shadow:inset 0 1px rgba(255,255,255,.9)}@keyframes spin{to{transform:rotate(1turn)}}
 .wash{position:absolute;inset:0;z-index:70;background:#fff;pointer-events:none;opacity:0;transform:scale(.1);border-radius:50%;filter:blur(8px)}.wash.go{animation:wash .9s var(--ease2) forwards}@keyframes wash{0%{opacity:0;transform:scale(.08)}36%{opacity:1}100%{opacity:0;transform:scale(2.4)}}
 #reveal{background:linear-gradient(180deg,#fff 0%,#fcfafc 52%,#f3edf5 100%)}.product-stage{height:min(54vh,470px);min-height:330px;display:grid;place-items:center;margin:6px 0 6px;position:relative}.product-stage::before{content:"";position:absolute;width:min(88vw,520px);height:min(46vw,220px);left:50%;bottom:4%;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(160,140,176,.24), rgba(160,140,176,0) 70%);filter:blur(18px)}.phone-hero{max-width:min(86vw,430px);max-height:min(50vh,430px);object-fit:contain;filter:drop-shadow(0 40px 35px rgba(71,53,78,.16));opacity:0;transform:translate3d(0,44px,-140px) scale(.76)}.scene.active .phone-hero{animation:phoneReveal 1.35s var(--ease2) .1s forwards}@keyframes phoneReveal{0%{opacity:0;filter:drop-shadow(0 10px 18px rgba(71,53,78,.05)) blur(3px);transform:translate3d(0,44px,-140px) scale(.76)}70%{opacity:1}100%{opacity:1;filter:drop-shadow(0 40px 35px rgba(71,53,78,.16)) blur(0);transform:translate3d(0,0,0) scale(1)}}.product-name,.product-spec,.product-actions{opacity:0;transform:translateY(13px)}.scene.active .product-name{animation:rise .75s var(--ease2) .58s forwards}.scene.active .product-spec{animation:rise .75s var(--ease2) .78s forwards}.scene.active .product-actions{animation:rise .75s var(--ease2) .96s forwards}.product-name{display:flex;justify-content:center;align-items:center;gap:.24em;font-size:clamp(38px,10vw,62px);line-height:1.01;letter-spacing:-.055em;font-weight:650}.product-spec{margin-top:10px;color:#5f5963;font-size:18px}.apple-mark{width:.82em;height:.94em;display:inline-block;position:relative;transform:translateY(.01em)}.apple-mark::before,.apple-mark::after{content:"";position:absolute;background:#111;border-radius:50%}.apple-mark::before{width:.58em;height:.64em;left:.09em;top:.23em;box-shadow:.19em 0 0 #111}.apple-mark::after{width:.22em;height:.16em;left:.42em;top:.02em;border-radius:100% 0 100% 0;transform:rotate(-32deg)}.apple-cut{position:absolute;width:.16em;height:.22em;right:.1em;top:.32em;background:#fff;border-radius:0 100% 100% 0;transform:rotate(-18deg)}
@@ -97,12 +116,19 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
   </section>
 
   <section class="scene" id="preReveal" data-step="3">
-    <div class="inner copy-animate" style="max-width:520px">
+    <div class="inner copy-animate">
       <div class="reveal-disc"></div>
       <div class="eyebrow">One more thing</div>
-      <h2>準備好打開<br>妳的禮物了嗎？</h2>
-      <p class="lead">真正的驚喜，現在才要揭曉。</p>
-      <div class="actions"><button class="btn" id="revealGift">揭曉禮物</button></div>
+      <h2 id="prankTitle">準備好打開<br>妳的禮物了嗎？</h2>
+      <div class="prank-status">
+        <p class="prank-message" id="prankMessage">真正的驚喜，現在才要揭曉。</p>
+        <div class="prank-counter" id="prankCounter">SURPRISE CHECK · 1 / 7</div>
+        <div class="prank-progress" id="prankProgress"><i></i></div>
+      </div>
+      <div class="prank-actions" id="prankActions">
+        <button class="btn" id="revealGift">揭曉禮物</button>
+        <span class="prank-pop" id="prankPop">差一點 😌</span>
+      </div>
     </div>
   </section>
 
@@ -146,13 +172,53 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 const sceneIds=['intro','gift','greeting','preReveal','reveal','bundle','finale'];
 const progress=document.getElementById('progress');sceneIds.forEach((id,i)=>{const d=document.createElement('i');if(i===0)d.classList.add('on');progress.appendChild(d)});const dots=[...progress.children];let current=0;const byId=id=>document.getElementById(id);
 function showScene(target){const index=typeof target==='number'?target:sceneIds.indexOf(target);if(index<0)return;current=index;sceneIds.forEach((id,i)=>byId(id).classList.toggle('active',i===index));dots.forEach((d,i)=>d.classList.toggle('on',i===index));}
-document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>showScene(btn.dataset.next)));byId('restart').addEventListener('click',()=>showScene('intro'));
+document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>showScene(btn.dataset.next)));byId('restart').addEventListener('click',()=>{resetPrank();showScene('intro')});
 const canvas=byId('fx'),ctx=canvas.getContext('2d');let particles=[];function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}addEventListener('resize',resize);resize();
 function burst(x,y,n=36,palette=['#ffffff','#eadfed','#d8c8e3','#f2d9e3','#f7e9ef']){for(let i=0;i<n;i++){const a=Math.PI*2*(i/n)+(Math.random()-.5)*0.4;particles.push({x,y,vx:Math.cos(a)*(2+Math.random()*4),vy:Math.sin(a)*(2+Math.random()*4)-1.5,r:1.8+Math.random()*3.4,life:1,dec:0.012+Math.random()*0.02,c:palette[(Math.random()*palette.length)|0]})}}
 function loop(){ctx.clearRect(0,0,innerWidth,innerHeight);particles=particles.filter(p=>p.life>0);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.015;p.life-=p.dec;ctx.globalAlpha=Math.max(p.life,0);ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)}loop();
 function centerOf(el){const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}}function softHaptic(){if(navigator.vibrate)navigator.vibrate(12)}
 byId('openGift').addEventListener('click',()=>{const scene=byId('gift');const p=centerOf(scene.querySelector('.gift-stage'));softHaptic();burst(p.x,p.y,38);scene.classList.add('opening');setTimeout(()=>{scene.classList.remove('opening');showScene('greeting')},1280)});
-byId('revealGift').addEventListener('click',()=>{const p=centerOf(byId('revealGift'));softHaptic();burst(p.x,p.y,24,['#ffffff','#efe6f4','#dccbe6']);const wash=byId('wash');wash.classList.remove('go');void wash.offsetWidth;wash.classList.add('go');setTimeout(()=>showScene('reveal'),420)});
+
+const prankSteps=[
+  {title:'等等，先確認一下。',msg:'妳真的準備好要看禮物了嗎？',btn:'我準備好了',counter:'SURPRISE CHECK · 2 / 7'},
+  {title:'嗯…還差一個步驟。',msg:'這個按鈕好像有自己的想法。',btn:'再按一次',counter:'SURPRISE CHECK · 3 / 7',dodge:true,pop:'嘿嘿，還沒 😌'},
+  {title:'正在解鎖禮物…',msg:'進度看起來非常有希望。',btn:'等等看',counter:'SURPRISE CHECK · 4 / 7',progress:99},
+  {title:'卡在 99% 了。',msg:'可能需要媽媽本人驗證。',btn:'我是媽媽',counter:'SURPRISE CHECK · 5 / 7'},
+  {title:'身分驗證成功。',msg:'但系統說還要最後再確認一次。',btn:'真的最後一次',counter:'SURPRISE CHECK · 6 / 7',pop:'好像快了 ✨'},
+  {title:'好啦，不鬧妳了。',msg:'這次真的會打開。',btn:'打開真正的禮物',counter:'SURPRISE CHECK · 7 / 7',final:true}
+];
+let prankIndex=0;
+const prankTitle=byId('prankTitle'),prankMessage=byId('prankMessage'),prankCounter=byId('prankCounter'),prankProgress=byId('prankProgress'),prankBar=prankProgress.querySelector('i'),prankPop=byId('prankPop'),revealBtn=byId('revealGift');
+function setPrankText(el,html){el.classList.add('swap');setTimeout(()=>{el.innerHTML=html;el.classList.remove('swap')},150)}
+function showPop(text){prankPop.textContent=text;prankPop.classList.remove('show');void prankPop.offsetWidth;prankPop.classList.add('show')}
+function resetPrank(){
+  prankIndex=0;prankTitle.innerHTML='準備好打開<br>妳的禮物了嗎？';prankMessage.textContent='真正的驚喜，現在才要揭曉。';prankCounter.textContent='SURPRISE CHECK · 1 / 7';prankCounter.classList.remove('show');prankProgress.classList.remove('show');prankBar.style.width='0%';revealBtn.textContent='揭曉禮物';revealBtn.style.transform='';revealBtn.classList.remove('dodge','tease');
+}
+function dodgeButton(){
+  const maxX=Math.min(92,innerWidth*.22), maxY=26;
+  const x=(Math.random()>.5?1:-1)*(42+Math.random()*(maxX-42));
+  const y=(Math.random()>.5?1:-1)*(8+Math.random()*maxY);
+  revealBtn.classList.add('dodge');revealBtn.style.transform=`translate(${x}px,${y}px)`;
+  setTimeout(()=>{revealBtn.style.transform='translate(0,0)'},520);
+}
+function realReveal(){
+  const p=centerOf(revealBtn);softHaptic();burst(p.x,p.y,30,['#ffffff','#efe6f4','#dccbe6','#f4dfe9']);
+  const wash=byId('wash');wash.classList.remove('go');void wash.offsetWidth;wash.classList.add('go');
+  setTimeout(()=>{showScene('reveal');resetPrank()},430);
+}
+revealBtn.addEventListener('click',()=>{
+  softHaptic();
+  if(prankIndex>=prankSteps.length){realReveal();return;}
+  const step=prankSteps[prankIndex++];
+  prankCounter.classList.add('show');prankCounter.textContent=step.counter;
+  setPrankText(prankTitle,step.title);setPrankText(prankMessage,step.msg);
+  revealBtn.textContent=step.btn;revealBtn.classList.remove('tease');void revealBtn.offsetWidth;revealBtn.classList.add('tease');
+  const p=centerOf(revealBtn);burst(p.x,p.y,8,['#ffffff','#e9deee','#f1dfe7']);
+  if(step.dodge){dodgeButton();showPop(step.pop||'差一點 😌')}
+  if(step.progress){prankProgress.classList.add('show');prankBar.style.width='0%';setTimeout(()=>prankBar.style.width=step.progress+'%',80)} else if(prankIndex>3){prankProgress.classList.remove('show')}
+  if(step.pop&&!step.dodge)showPop(step.pop);
+  if(step.final){revealBtn.classList.remove('dodge');revealBtn.style.transform=''}
+});
 </script>
 </body>
 </html>
