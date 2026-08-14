@@ -5,22 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#f6f1f5" />
 <title>媽媽，有一份禮物送給妳 🎁</title>
-<meta name="description" content="Happy Birthday ❤️ 弟弟 & 肉肉準備了一個小小的生日驚喜，點開看看。" />
+<meta name="description" content="弟弟 &amp; 肉肉準備了一個生日驚喜 ❤️" />
 <link rel="canonical" href="https://stan-yao.github.io/mom_birthday/" />
 <meta property="og:locale" content="zh_TW" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="媽媽，有一份禮物送給妳 🎁" />
-<meta property="og:description" content="Happy Birthday ❤️ 弟弟 & 肉肉準備了一個小小的生日驚喜，點開看看。" />
+<meta property="og:description" content="弟弟 &amp; 肉肉準備了一個生日驚喜 ❤️" />
 <meta property="og:url" content="https://stan-yao.github.io/mom_birthday/" />
 <meta property="og:image" content="https://stan-yao.github.io/mom_birthday/preview.png" />
 <meta property="og:image:secure_url" content="https://stan-yao.github.io/mom_birthday/preview.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1731" />
 <meta property="og:image:height" content="909" />
-<meta property="og:image:alt" content="媽媽，有一份禮物送給妳，紫色緞帶禮物盒生日驚喜預覽圖" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="媽媽，有一份禮物送給妳 🎁" />
-<meta name="twitter:description" content="Happy Birthday ❤️ 弟弟 & 肉肉準備了一個小小的生日驚喜，點開看看。" />
+<meta name="twitter:description" content="弟弟 &amp; 肉肉準備了一個生日驚喜 ❤️" />
 <meta name="twitter:image" content="https://stan-yao.github.io/mom_birthday/preview.png" />
 <style>
 :root{--bg0:#fcfbfd;--bg1:#f7f3f7;--bg2:#f1ebf3;--ink:#151417;--muted:#6f6972;--soft:#8a8291;--ease:cubic-bezier(.22,.77,.18,1);--ease2:cubic-bezier(.16,1,.3,1)}
@@ -97,6 +96,67 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
 
 #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:65}
 @media (max-height:720px){.hero-img{max-height:280px}.product-stage{height:340px;min-height:300px}.phone-hero{max-height:310px}.panel{padding:28px 22px 25px}}@media (max-width:410px){.gift-card{grid-template-columns:98px 1fr}.thumb{width:98px;height:98px}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ===== iPhone / old Safari / large-text compatibility ===== */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+#app{
+  height:100vh;
+  height:var(--app-height,100dvh);
+  min-height:0;
+}
+.scene{
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:contain;
+  place-items:start center;
+  scrollbar-width:none;
+}
+.scene::-webkit-scrollbar{display:none}
+.scene > .inner{
+  margin-top:auto;
+  margin-bottom:auto;
+  flex:0 0 auto;
+}
+/* When a scene is taller than the visible viewport, auto margins collapse
+   and the scene becomes naturally scrollable from the top instead of clipping. */
+@media (max-height:760px){
+  .scene{padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(22px,env(safe-area-inset-bottom))}
+  .eyebrow{margin-bottom:10px}
+  h1{font-size:clamp(32px,8.7vw,52px)}
+  h2{font-size:clamp(28px,7.6vw,42px)}
+  .lead{margin-top:10px;font-size:15px;line-height:1.55}
+  .actions{margin-top:18px}
+  .btn{height:48px;min-width:156px}
+  #intro .inner{gap:10px}
+  #intro .hero-img{max-width:min(68vw,250px);max-height:29vh}
+  .gift-stage{height:min(45vh,350px);min-height:260px}
+  .gift-closed{width:min(70vw,300px);max-height:34vh}
+  .gift-open-art{width:min(82vw,420px);max-height:45vh}
+  .panel{padding:25px 20px 22px}
+  .greeting-copy{margin-top:17px;font-size:15px;line-height:1.75}
+  .reveal-disc{width:104px;height:104px;margin-bottom:18px}
+  .product-stage{height:min(43vh,340px);min-height:250px}
+  .phone-hero{max-height:34vh}
+}
+@media (max-height:650px){
+  #intro .hero-img{max-height:24vh;max-width:min(60vw,220px)}
+  h1{font-size:clamp(30px,8vw,46px)}
+  .lead{font-size:14px}
+  .gift-stage{height:300px;min-height:230px}
+  .gift-closed{max-height:30vh}
+  .product-stage{height:290px;min-height:220px}
+  .phone-hero{max-height:29vh}
+}
+/* Large accessibility text: keep the layout usable rather than pushing CTA off-screen. */
+@media (max-width:430px){
+  .scene{padding-left:18px;padding-right:18px}
+  .btn{max-width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -214,6 +274,21 @@ body{overflow:hidden;overscroll-behavior:none} button{font:inherit;cursor:pointe
     </div>
   </section>
 </div>
+<script>
+(function(){
+  function syncViewportHeight(){
+    var h=(window.visualViewport && window.visualViewport.height) || window.innerHeight || document.documentElement.clientHeight;
+    document.documentElement.style.setProperty('--app-height', Math.round(h) + 'px');
+  }
+  syncViewportHeight();
+  window.addEventListener('resize', syncViewportHeight, {passive:true});
+  window.addEventListener('orientationchange', function(){setTimeout(syncViewportHeight,120);}, {passive:true});
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize', syncViewportHeight, {passive:true});
+    window.visualViewport.addEventListener('scroll', syncViewportHeight, {passive:true});
+  }
+})();
+</script>
 <script>
 const sceneIds=['intro','gift','greeting','preReveal','reveal','bundle','finale'];
 const progress=document.getElementById('progress');sceneIds.forEach((id,i)=>{const d=document.createElement('i');if(i===0)d.classList.add('on');progress.appendChild(d)});const dots=[...progress.children];let current=0;const byId=id=>document.getElementById(id);
